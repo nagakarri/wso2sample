@@ -1,0 +1,159 @@
+{
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "basePath": "/biblio",
+  "swagger": "2.0",
+  "paths": {
+    "/titles/{isbn}": {
+      "delete": {
+        "responses": {
+          "default": {
+            "description": "Default Response"
+          }
+        },
+        "parameters": [
+          {
+            "description": "isbn",
+            "in": "path",
+            "name": "isbn",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Title"
+        ],
+        "summary": "update Title in the store",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "isbn",
+            "in": "path",
+            "name": "isbn",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Title object that needs to be updated to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Title"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default Response"
+          }
+        }
+      },
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Default Response"
+          }
+        },
+        "parameters": [
+          {
+            "description": "isbn",
+            "in": "path",
+            "name": "isbn",
+            "required": true,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/titles": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "Default Response"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Title"
+        ],
+        "summary": "Add a new Title to the store",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Title object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Title"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Default Response"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Title": {
+      "type": "object",
+      "properties": {
+        "ISBN": {
+          "type": "string",
+          "description": "ISBN"
+        },
+        "Author": {
+          "type": "string",
+          "description": "Author"
+        },
+        "TitleName": {
+          "type": "string",
+          "description": "Author"
+        },
+        "PublishDate": {
+          "type": "string",
+          "description": "Author"
+        },
+        "Price": {
+          "type": "string",
+          "format": "number",
+          "description": "Author"
+        },
+        "Quantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Quantity"
+        }
+      },
+      "xml": {
+        "name": "Title"
+      }
+    }
+  },
+  "info": {
+    "description": "API Definition of biblio-api",
+    "title": "biblio-api",
+    "version": "1.0.0"
+  }
+}

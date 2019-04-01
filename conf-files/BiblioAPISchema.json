@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "BiblioAPI",
+  "description": "Biblio API schema",
+  "type": "object",
+  "properties": {
+    "Title": {
+      "type": "object",
+      "properties": {
+        "ISBN": {
+          "description": "The unique identifier for a book",
+          "type": "string"
+        },
+        "Author": {
+          "description": "Name of the Author",
+          "type": "string"
+        },
+        "TitleName": {
+          "description": "Name of the book",
+          "type": "string"
+        },
+        "PublishDate": {
+          "description": "PublishDate of the book",
+          "type": "string",
+          "pattern": "^([0-2][0-9]|(3)[0-1])-(((0)[0-9])|((1)[0-2]))-[0-9]{4}$"
+        },
+        "Price": {
+          "description": "Book price",
+          "type": "number"
+        },
+        "Quantity": {
+          "description": "Number of books in stock",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "ISBN",
+        "Author",
+        "TitleName",
+        "PublishDate",
+        "Price",
+        "Quantity"
+      ]
+    }
+  },
+  "required": [
+    "Title"
+  ]
+}

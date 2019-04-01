@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="efb85f76-a5d8-4f1d-aa04-73426e4e75d1" activeEnvironment="Default" name="BiblioSOAP" resourceRoot="" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="18cb2011-4e9a-47d9-83f9-0dba963dc3f9" wsaVersion="NONE" name="BiblioServiceSOAP" type="wsdl" bindingName="{http://www.naga.com/BiblioService/}BiblioServiceSOAP" soapVersion="1_1" anonymous="optional" definition="file:/Users/nkarri/workspace/soapui-workspace/hmrc/BiblioService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/Users/nkarri/workspace/soapui-workspace/hmrc/BiblioService.wsdl"><con:part><con:url>file:/Users/nkarri/workspace/soapui-workspace/hmrc/BiblioService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="BiblioService" targetNamespace="http://www.naga.com/BiblioService/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.naga.com/BiblioService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:documentation>BiblioService, a webservice which can be used to add or retrieve books from a collection.</wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.naga.com/BiblioService/">
+      <xsd:element name="GetTitle">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="isbn" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetTitleResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Title" minOccurs="0" maxOccurs="1">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ISBN" type="xsd:string"/>
+                  <xsd:element name="Author" type="xsd:string"/>
+                  <xsd:element name="TitleName" type="xsd:string"/>
+                  <xsd:element name="PublishDate" type="xsd:string"/>
+                  <xsd:element name="Price" type="xsd:string"/>
+                  <xsd:element name="Quantity" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateTitles">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Title" minOccurs="0" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ISBN" type="xsd:string"/>
+                  <xsd:element name="Author" type="xsd:string"/>
+                  <xsd:element name="TitleName" type="xsd:string"/>
+                  <xsd:element name="PublishDate" type="xsd:string"/>
+                  <xsd:element name="Price" type="xsd:string"/>
+                  <xsd:element name="Quantity" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CreateTitlesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Title" minOccurs="0" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ISBN" type="xsd:string"/>
+                  <xsd:element name="Author" type="xsd:string"/>
+                  <xsd:element name="TitleName" type="xsd:string"/>
+                  <xsd:element name="PublishDate" type="xsd:string"/>
+                  <xsd:element name="Price" type="xsd:string"/>
+                  <xsd:element name="Quantity" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="GetAllTitles">
+        <xsd:complexType/>
+      </xsd:element>
+      <xsd:element name="GetAllTitlesResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Title" minOccurs="0" maxOccurs="unbounded">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ISBN" type="xsd:string"/>
+                  <xsd:element name="Author" type="xsd:string"/>
+                  <xsd:element name="TitleName" type="xsd:string"/>
+                  <xsd:element name="PublishDate" type="xsd:string"/>
+                  <xsd:element name="Price" type="xsd:string"/>
+                  <xsd:element name="Quantity" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateTitle">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Title" minOccurs="1" maxOccurs="1">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ISBN" type="xsd:string"/>
+                  <xsd:element name="Author" type="xsd:string"/>
+                  <xsd:element name="TitleName" type="xsd:string"/>
+                  <xsd:element name="PublishDate" type="xsd:string"/>
+                  <xsd:element name="Price" type="xsd:string"/>
+                  <xsd:element name="Quantity" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="UpdateTitleResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Title" minOccurs="1" maxOccurs="1">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ISBN" type="xsd:string"/>
+                  <xsd:element name="Author" type="xsd:string"/>
+                  <xsd:element name="TitleName" type="xsd:string"/>
+                  <xsd:element name="PublishDate" type="xsd:string"/>
+                  <xsd:element name="Price" type="xsd:string"/>
+                  <xsd:element name="Quantity" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteTitle">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="isbn" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DeleteTitleResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Title" minOccurs="1" maxOccurs="1">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ISBN" type="xsd:string"/>
+                  <xsd:element name="Author" type="xsd:string"/>
+                  <xsd:element name="TitleName" type="xsd:string"/>
+                  <xsd:element name="PublishDate" type="xsd:string"/>
+                  <xsd:element name="Price" type="xsd:string"/>
+                  <xsd:element name="Quantity" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <!--A wsdl `message` element is used to define a message
+		exchanged between a web service, consisting of zero
+		or more `part`s.-->
+  <wsdl:message name="GetTitleRequest">
+    <wsdl:part element="tns:GetTitle" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="GetTitleResponse">
+    <wsdl:part element="tns:GetTitleResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="CreateTitlesRequest">
+    <wsdl:part name="parameters" element="tns:CreateTitles"/>
+  </wsdl:message>
+  <wsdl:message name="CreateTitlesResponse">
+    <wsdl:part name="parameters" element="tns:CreateTitlesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllTitlesRequest">
+    <wsdl:part name="parameters" element="tns:GetAllTitles"/>
+  </wsdl:message>
+  <wsdl:message name="GetAllTitlesResponse">
+    <wsdl:part name="parameters" element="tns:GetAllTitlesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateTitleRequest">
+    <wsdl:part name="parameters" element="tns:UpdateTitle"/>
+  </wsdl:message>
+  <wsdl:message name="UpdateTitleResponse">
+    <wsdl:part name="parameters" element="tns:UpdateTitleResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteTitleRequest">
+    <wsdl:part name="parameters" element="tns:DeleteTitle"/>
+  </wsdl:message>
+  <wsdl:message name="DeleteTitleResponse">
+    <wsdl:part name="parameters" element="tns:DeleteTitleResponse"/>
+  </wsdl:message>
+  <!--A WSDL `portType` is used to combine multiple `message`s 
+		(e.g. input, output) into a single operation.
+		
+		Here we define three synchronous (input/output) operations
+		and the `message`s that must be used for each.-->
+  <wsdl:portType name="BiblioService">
+    <wsdl:operation name="GetTitle">
+      <wsdl:input message="tns:GetTitleRequest"/>
+      <wsdl:output message="tns:GetTitleResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTitles">
+      <wsdl:input message="tns:CreateTitlesRequest"/>
+      <wsdl:output message="tns:CreateTitlesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTitles">
+      <wsdl:input message="tns:GetAllTitlesRequest"/>
+      <wsdl:output message="tns:GetAllTitlesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTitle">
+      <wsdl:input message="tns:UpdateTitleRequest"/>
+      <wsdl:output message="tns:UpdateTitleResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTitle">
+      <wsdl:input message="tns:DeleteTitleRequest"/>
+      <wsdl:output message="tns:DeleteTitleResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <!--The `binding` element defines exactly how each
+		`operation` will take place over the network.
+		In this case, we are using SOAP.-->
+  <wsdl:binding name="BiblioServiceSOAP" type="tns:BiblioService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="GetTitle">
+      <soap:operation soapAction="http://www.naga.com/BiblioService/GetTitle"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTitles">
+      <soap:operation soapAction="http://www.naga.com/BiblioService/CreateTitles"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTitles">
+      <soap:operation soapAction="http://www.naga.com/BiblioService/GetAllTitles"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTitle">
+      <soap:operation soapAction="http://www.naga.com/BiblioService/UpdateTitle"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTitle">
+      <soap:operation soapAction="http://www.naga.com/BiblioService/DeleteTitle"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BiblioService">
+    <wsdl:port binding="tns:BiblioServiceSOAP" name="BiblioServiceSOAP">
+      <soap:address location="http://www.example.org/BiblioService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://Nagas-MacBook-Pro.local:8088/bibliomockservice</con:endpoint><con:endpoint>http://www.example.org/BiblioService</con:endpoint></con:endpoints><con:operation id="439a26ff-15ce-42cf-84d2-3b124ae3ff03" isOneWay="false" action="http://www.naga.com/BiblioService/CreateTitles" name="CreateTitles" bindingOperationName="CreateTitles" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b48d5e8d-750b-43ed-86ec-88c6bcb5c745" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.example.org/BiblioService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bib="http://www.naga.com/BiblioService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bib:CreateTitles>
+         <!--Zero or more repetitions:-->
+         <Title>
+            <ISBN>?</ISBN>
+            <Author>?</Author>
+            <TitleName>?</TitleName>
+            <PublishDate>?</PublishDate>
+            <Price>?</Price>
+            <Quantity>?</Quantity>
+         </Title>
+      </bib:CreateTitles>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.naga.com/BiblioService/CreateTitles"/></con:call></con:operation><con:operation id="6fb5e7f3-d409-4c32-8a5a-267dc07c5578" isOneWay="false" action="http://www.naga.com/BiblioService/DeleteTitle" name="DeleteTitle" bindingOperationName="DeleteTitle" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="be49e453-b4db-407d-84cc-95afc5af3202" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.example.org/BiblioService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bib="http://www.naga.com/BiblioService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bib:DeleteTitle>
+         <isbn>?</isbn>
+      </bib:DeleteTitle>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.naga.com/BiblioService/DeleteTitle"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="0c28c99d-accb-47d7-a8e3-cbe4f494452e" isOneWay="false" action="http://www.naga.com/BiblioService/GetAllTitles" name="GetAllTitles" bindingOperationName="GetAllTitles" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a0b2c4c6-9ed8-4b5a-bb16-624fa8d99607" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.example.org/BiblioService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bib="http://www.naga.com/BiblioService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bib:GetAllTitles/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.naga.com/BiblioService/GetAllTitles"/></con:call></con:operation><con:operation id="f7e86565-bd9e-4589-8a5e-54bf497cb48a" isOneWay="false" action="http://www.naga.com/BiblioService/GetTitle" name="GetTitle" bindingOperationName="GetTitle" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dd8ffadd-a653-4f80-a0c9-a61cc8e8dac5" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://Nagas-MacBook-Pro.local:8088/bibliomockservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bib="http://www.naga.com/BiblioService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bib:GetTitle>
+         <isbn>?</isbn>
+      </bib:GetTitle>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.naga.com/BiblioService/GetTitle"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="c28ade1c-e7f4-4a7c-b7f1-d5c44404c1b0" isOneWay="false" action="http://www.naga.com/BiblioService/UpdateTitle" name="UpdateTitle" bindingOperationName="UpdateTitle" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b3cc7ecf-6ca9-42d0-aa10-f00255ed7431" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.example.org/BiblioService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bib="http://www.naga.com/BiblioService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bib:UpdateTitle>
+         <Title>
+            <ISBN>?</ISBN>
+            <Author>?</Author>
+            <TitleName>?</TitleName>
+            <PublishDate>?</PublishDate>
+            <Price>?</Price>
+            <Quantity>?</Quantity>
+         </Title>
+      </bib:UpdateTitle>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.naga.com/BiblioService/UpdateTitle"/></con:call></con:operation></con:interface><con:mockService id="77eb0d60-1b9d-409c-87b8-2a71132ff51a" port="8088" path="/bibliomockservice" host="Nagas-MacBook-Pro.local" name="BiblioSOAP MockService" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="CreateTitles" id="12469643-4b96-4f26-896f-1ee49d88bed1" interface="BiblioServiceSOAP" operation="CreateTitles"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="6657fd8b-5f53-43d8-8bc6-d68182efa8bc" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bib="http://www.naga.com/BiblioService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bib:CreateTitlesResponse>
+         <!--Zero or more repetitions:-->
+         <Title>
+	         <ISBN>9876543219876</ISBN>
+		    <Author>Erle Stanley Gardner</Author>
+		    <TitleName>The Case of the Amorous Aunt</TitleName>
+		    <PublishDate>03-03-1963</PublishDate>
+		    <Price>3.49</Price>
+		    <Quantity>20</Quantity>
+         </Title>
+      </bib:CreateTitlesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.naga.com/BiblioService/CreateTitles"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="DeleteTitle" id="a206ac1a-7b53-4b0b-9f29-5ec21ab82cd8" interface="BiblioServiceSOAP" operation="DeleteTitle"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="c0c412c3-c92a-4f75-92d5-c2816cd80ad0" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bib="http://www.naga.com/BiblioService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bib:DeleteTitleResponse>
+         <Title>
+	         <ISBN>9876543219876</ISBN>
+		    <Author>Erle Stanley Gardner</Author>
+		    <TitleName>The Case of the Amorous Aunt</TitleName>
+		    <PublishDate>03-03-1963</PublishDate>
+		    <Price>3.49</Price>
+		    <Quantity>20</Quantity>
+         </Title>
+      </bib:DeleteTitleResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.naga.com/BiblioService/DeleteTitle"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="GetAllTitles" id="42601e27-9f20-4005-bcbe-259d8f5ad473" interface="BiblioServiceSOAP" operation="GetAllTitles"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="59c76844-6b74-441e-b5c3-9acfa4c3def6" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bib="http://www.naga.com/BiblioService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bib:GetAllTitlesResponse>
+         <!--Zero or more repetitions:-->
+         <Title>
+	        <ISBN>1234567891234</ISBN>
+	        <Author>John Grisham</Author>
+	        <TitleName>The Firm</TitleName>
+	        <PublishDate>01-02-1991</PublishDate>
+	        <Price>4.50</Price>
+	        <Quantity>4</Quantity>
+	    </Title>
+         <Title>
+	         <ISBN>9876543219876</ISBN>
+		    <Author>Erle Stanley Gardner</Author>
+		    <TitleName>The Case of the Amorous Aunt</TitleName>
+		    <PublishDate>03-03-1963</PublishDate>
+		    <Price>3.49</Price>
+		    <Quantity>20</Quantity>
+         </Title>
+      </bib:GetAllTitlesResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.naga.com/BiblioService/GetAllTitles"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="GetTitle" id="d0e5f192-81fe-49f9-8d68-c3da22c8776d" interface="BiblioServiceSOAP" operation="GetTitle"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="60efd532-a9ac-44e7-ab54-408c4c927167" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bib="http://www.naga.com/BiblioService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bib:GetTitleResponse>
+         <!--Optional:-->
+         <Title>
+	         <ISBN>9876543219876</ISBN>
+		    <Author>Erle Stanley Gardner</Author>
+		    <TitleName>The Case of the Amorous Aunt</TitleName>
+		    <PublishDate>03-03-1963</PublishDate>
+		    <Price>3.49</Price>
+		    <Quantity>20</Quantity>
+         </Title>
+      </bib:GetTitleResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.naga.com/BiblioService/GetTitle"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="UpdateTitle" id="175c8015-555b-48e4-bd03-1df8b611432d" interface="BiblioServiceSOAP" operation="UpdateTitle"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="da1ae8c5-866c-414d-835e-856a7f5b13c6" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:bib="http://www.naga.com/BiblioService/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <bib:UpdateTitleResponse>
+         <Title>
+	         <ISBN>9876543219876</ISBN>
+		    <Author>Erle Stanley Gardner</Author>
+		    <TitleName>The Case of the Amorous Aunt</TitleName>
+		    <PublishDate>03-03-1963</PublishDate>
+		    <Price>3.49</Price>
+		    <Quantity>20</Quantity>
+         </Title>
+      </bib:UpdateTitleResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.naga.com/BiblioService/UpdateTitle"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
