@@ -1,5 +1,5 @@
 # Project Title
-wso2-api-sample is a wso2 project with an api which can take  GET, POST, PUT, DELETE with json payload. Request payload is validated against a json schema transformed to xml and xslt adds required namespace. The xml will be sent to back end SOAP mock service. Response from SOAP mock service is transformed to json and will be returned to the client.
+wso2-api-sample is a wso2 project with an api which can take  GET, POST, PUT, DELETE with json payload.This is a bibliographic REST service which fetches, creates, updates and deletes books from the store.  Request payload is validated against a json schema transformed to xml and xslt adds required namespace. The xml will be sent to back end SOAP mock service. Response from SOAP mock service is transformed to json and will be returned to the client.
 
 ## Getting Started
 
@@ -56,3 +56,29 @@ Install WSO2 API Manager
 
 2. Run the biblio-api-TestSuite
 
+## Sample Request
+{
+    "Title": {
+      "ISBN": "9876543219876",
+      "Author": "Erle Stanley Gardner",
+      "TitleName": "The Case of the Amorous Aunt",
+      "PublishDate": "03-03-1963",
+      "Price": 3.49,
+      "Quantity": 20
+    }
+  
+}
+
+## Sample Response
+{
+    "CreateTitlesResponse": {
+        "Title": {
+            "ISBN": 9876543219876,
+            "Author": "Erle Stanley Gardner",
+            "TitleName": "The Case of the Amorous Aunt",
+            "PublishDate": "03-03-1963",
+            "Price": 3.49,
+            "Quantity": 20
+        }
+    }
+}
