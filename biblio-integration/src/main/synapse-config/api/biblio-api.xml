@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/biblio" name="biblio-api" xmlns="http://ws.apache.org/ns/synapse">
+  <resource methods="GET" protocol="http" uri-template="/titles/{isbn}">
+    <inSequence>
+      <payloadFactory media-type="xml">
+        <format>
+          <GetTitle>
+            <isbn>$1</isbn>
+          </GetTitle>
+        </format>
+        <args>
+          <arg evaluator="xml" expression="get-property('uri.var.isbn')"/>
+        </args>
+      </payloadFactory>
+      <xslt key="conf:BiblioNamespace.xsl"/>
+      <header name="Action" scope="default" value="urn:GetTitle"/>
+      <send>
+        <endpoint>
+          <address format="soap11" trace="disable" uri="http://localhost:8088/bibliomockservice"/>
+        </endpoint>
+      </send>
+    </inSequence>
+    <outSequence>
+      <log level="full"/>
+      <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+      <send/>
+    </outSequence>
+    <faultSequence>
+      <drop/>
+    </faultSequence>
+  </resource>
+  <resource methods="PUT" protocol="http" uri-template="/titles/{isbn}">
+    <inSequence>
+      <validate>
+        <schema key="conf:BiblioAPISchema.json"/>
+        <on-fail>
+          <payloadFactory media-type="json">
+            <format>{"Error":"$1"}</format>
+            <args>
+              <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+            </args>
+          </payloadFactory>
+          <property name="HTTP_SC" scope="axis2" type="STRING" value="400"/>
+          <respond/>
+        </on-fail>
+      </validate>
+      <payloadFactory media-type="xml">
+        <format>
+          <UpdateTitle>
+            <Title>
+              <ISBN>$1</ISBN>
+              <Author>$2</Author>
+              <TitleName>$3</TitleName>
+              <PublishDate>$4</PublishDate>
+              <Price>$5</Price>
+              <Quantity>$6</Quantity>
+            </Title>
+          </UpdateTitle>
+        </format>
+        <args>
+          <arg evaluator="xml" expression="get-property('uri.var.isbn')"/>
+          <arg evaluator="xml" expression="'$.Title.Author'"/>
+          <arg evaluator="xml" expression="'$.Title.TitleName'"/>
+          <arg evaluator="xml" expression="'$.Title.PublishDate'"/>
+          <arg evaluator="xml" expression="'$.Title.Price'"/>
+          <arg evaluator="xml" expression="'$.Title.Quantity'"/>
+        </args>
+      </payloadFactory>
+      <xslt key="conf:BiblioNamespace.xsl"/>
+      <header name="Action" scope="default" value="urn:UpdateTitle"/>
+      <send>
+        <endpoint>
+          <address format="soap11" trace="disable" uri="http://localhost:8088/bibliomockservice"/>
+        </endpoint>
+      </send>
+    </inSequence>
+    <outSequence>
+      <log level="full"/>
+      <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+      <send/>
+    </outSequence>
+    <faultSequence>
+      <drop/>
+    </faultSequence>
+  </resource>
+  <resource methods="DELETE" protocol="http" uri-template="/titles/{isbn}">
+    <inSequence>
+      <payloadFactory media-type="xml">
+        <format>
+          <DeleteTitle>
+            <isbn>$1</isbn>
+          </DeleteTitle>
+        </format>
+        <args>
+          <arg evaluator="xml" expression="get-property('uri.var.isbn')"/>
+        </args>
+      </payloadFactory>
+      <xslt key="conf:BiblioNamespace.xsl"/>
+      <header name="Action" scope="default" value="urn:DeleteTitle"/>
+      <send>
+        <endpoint>
+          <address format="soap11" trace="disable" uri="http://localhost:8088/bibliomockservice"/>
+        </endpoint>
+      </send>
+    </inSequence>
+    <outSequence>
+      <log level="full"/>
+      <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+      <send/>
+    </outSequence>
+    <faultSequence>
+      <drop/>
+    </faultSequence>
+  </resource>
+  <resource methods="POST" protocol="http" url-mapping="/titles">
+    <inSequence>
+      <validate>
+        <schema key="conf:BiblioAPISchema.json"/>
+        <on-fail>
+          <payloadFactory media-type="json">
+            <format>{"Error":"$1"}</format>
+            <args>
+              <arg evaluator="xml" expression="$ctx:ERROR_MESSAGE"/>
+            </args>
+          </payloadFactory>
+          <property name="HTTP_SC" scope="axis2" type="STRING" value="400"/>
+          <respond/>
+        </on-fail>
+      </validate>
+      <payloadFactory media-type="xml">
+        <format>
+          <CreateTitles>
+            <Title>
+              <ISBN>$1</ISBN>
+              <Author>$2</Author>
+              <TitleName>$3</TitleName>
+              <PublishDate>$4</PublishDate>
+              <Price>$5</Price>
+              <Quantity>$6</Quantity>
+            </Title>
+          </CreateTitles>
+        </format>
+        <args>
+          <arg evaluator="xml" expression="get-property('uri.var.isbn')"/>
+          <arg evaluator="xml" expression="'$.Title.Author'"/>
+          <arg evaluator="xml" expression="'$.Title.TitleName'"/>
+          <arg evaluator="xml" expression="'$.Title.PublishDate'"/>
+          <arg evaluator="xml" expression="'$.Title.Price'"/>
+          <arg evaluator="xml" expression="'$.Title.Quantity'"/>
+        </args>
+      </payloadFactory>
+      <xslt key="conf:BiblioNamespace.xsl"/>
+      <header name="Action" scope="default" value="urn:CreateTitles"/>
+      <send>
+        <endpoint>
+          <address format="soap11" trace="disable" uri="http://localhost:8088/bibliomockservice"/>
+        </endpoint>
+      </send>
+    </inSequence>
+    <outSequence>
+      <log level="full"/>
+      <property name="HTTP_SC" scope="axis2" type="STRING" value="201"/>
+      <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+      <send/>
+    </outSequence>
+    <faultSequence>
+      <drop/>
+    </faultSequence>
+  </resource>
+  <resource methods="GET" protocol="http" url-mapping="/titles">
+    <inSequence>
+      <payloadFactory media-type="xml">
+        <format>
+          <GetAllTitles/>
+        </format>
+        <args/>
+      </payloadFactory>
+      <xslt key="conf:BiblioNamespace.xsl"/>
+      <header name="Action" scope="default" value="urn:GetAllTitles"/>
+      <send>
+        <endpoint>
+          <address format="soap11" trace="disable" uri="http://localhost:8088/bibliomockservice"/>
+        </endpoint>
+      </send>
+    </inSequence>
+    <outSequence>
+      <log level="full"/>
+      <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+      <send/>
+    </outSequence>
+    <faultSequence>
+      <drop/>
+    </faultSequence>
+  </resource>
+</api>
